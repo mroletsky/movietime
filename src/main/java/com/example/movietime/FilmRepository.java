@@ -55,5 +55,19 @@ public class FilmRepository {
                 List.of(Genre.DRAMA),
                 12,
                 118));
+
+        films.add(new Film(4,
+                "Halastamatu maa",
+                List.of("William Eubank"),
+                List.of(Genre.ACTION, Genre.THRILLER),
+                12,
+                113));
+
+        films.add(new Film(5,
+                "Kass ja koer: põgenemine",
+                List.of("Reem Kherici"),
+                List.of(Genre.COMEDY, Genre.ADVENTURE),
+                6,
+                87));
     }
 }

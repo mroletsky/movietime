@@ -36,12 +36,19 @@ public class FilmController {
 
     @GetMapping("/genre/{input}")
     List<Film> findByGenre(@PathVariable String input) {
-        Genre genre = Genre.valueOf(input.toUpperCase());
-        return filmRepository.findByGenre(genre);
+        try {
+            Genre genre = Genre.valueOf(input.toUpperCase());
+            return filmRepository.findByGenre(genre);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/age/{age}")
     List<Film> findByGenre(@PathVariable Integer age) {
+        if (age < 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
         return filmRepository.findByAgeLimit(age);
     }
 
