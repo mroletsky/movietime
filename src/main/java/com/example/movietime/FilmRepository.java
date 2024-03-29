@@ -37,35 +37,35 @@ public class FilmRepository {
     private void init() {
         films.add(new Film(1,
                 "Düün: teine osa",
-                List.of("Denis Villeneuve"),
+                "Denis Villeneuve",
                 List.of(Genre.SCIFI, Genre.ADVENTURE),
                 12,
                 166));
 
         films.add(new Film(2,
                 "Kung Fu Panda 4",
-                List.of("Mike Mitchell", "Stephanie Strine"),
+                "Mike Mitchell, Stephanie Strine",
                 List.of(Genre.ANIMATION, Genre.ACTION, Genre.ADVENTURE),
                 0,
                 94));
 
         films.add(new Film(3,
                 "Elu ja armastus",
-                List.of("Helen Takkin"),
+                "Helen Takkin",
                 List.of(Genre.DRAMA),
                 12,
                 118));
 
         films.add(new Film(4,
                 "Halastamatu maa",
-                List.of("William Eubank"),
+                "William Eubank",
                 List.of(Genre.ACTION, Genre.THRILLER),
                 12,
                 113));
 
         films.add(new Film(5,
                 "Kass ja koer: põgenemine",
-                List.of("Reem Kherici"),
+                "Reem Kherici",
                 List.of(Genre.COMEDY, Genre.ADVENTURE),
                 6,
                 87));

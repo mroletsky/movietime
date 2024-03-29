@@ -11,7 +11,7 @@ public record Film(
         Integer id,
         @NotEmpty
         String title,
-        List<String> directors,
+        String director,
         List<Genre> genres,
         @PositiveOrZero
         Integer ageLimit,
