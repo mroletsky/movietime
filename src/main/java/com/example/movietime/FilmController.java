@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/api/films")
 public class FilmController {
@@ -24,11 +22,8 @@ public class FilmController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
-        Optional<Film> film = filmRepository.findById(id);
-        if(film.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(film.get(), HttpStatus.OK);
+        Film film = filmRepository.findById(id);
+        return new ResponseEntity<>(film, HttpStatus.OK);
     }
 
     @GetMapping("/genre/{genre}")

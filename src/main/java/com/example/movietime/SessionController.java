@@ -37,10 +37,10 @@ public class SessionController {
         return new ResponseEntity<>(sessionRepository.findByTimeBetween(start, end), HttpStatus.OK);
     }
 
-    @GetMapping("/language/{str}")
-    public ResponseEntity<?> findByLanguage(@PathVariable("str") String lang) {
+    @GetMapping("/language/{language}")
+    public ResponseEntity<?> findByLanguage(@PathVariable("language") String languageString) {
         try {
-            Language language = Language.valueOf(lang.toUpperCase());
+            Language language = Language.valueOf(languageString.toUpperCase());
             return new ResponseEntity<>(sessionRepository.findByLanguage(language), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -48,9 +48,9 @@ public class SessionController {
     }
 
     @GetMapping("/date/{date}/language/{language}")
-    public ResponseEntity<?> findByDateAndLanguage(@PathVariable("date") String dateString, @PathVariable("language") String lang) {
+    public ResponseEntity<?> findByDateAndLanguage(@PathVariable("date") String dateString, @PathVariable("language") String languageString) {
         try {
-            Language language = Language.valueOf(lang.toUpperCase());
+            Language language = Language.valueOf(languageString.toUpperCase());
             LocalDate date = LocalDate.parse(dateString);
             LocalDateTime start = date.atStartOfDay();
             LocalDateTime end = date.plusDays(1).atStartOfDay();

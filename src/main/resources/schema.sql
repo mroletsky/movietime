@@ -6,3 +6,12 @@ CREATE TABLE IF NOT EXISTS Film (
     age_limit INT NOT NULL,
     duration INT NOT NULL
 );
+
+CREATE TABLE Session (
+    id INT PRIMARY KEY,
+    time TIMESTAMP,
+    isSeatFree TEXT,
+    film_id INT,
+    language VARCHAR(255),
+    FOREIGN KEY (film_id) REFERENCES Film(id)
+);

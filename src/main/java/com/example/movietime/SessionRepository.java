@@ -1,6 +1,7 @@
 package com.example.movietime;
 
 import jakarta.annotation.PostConstruct;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -12,10 +13,13 @@ public class SessionRepository {
 
     private final FilmRepository filmRepository;
 
+    private final JdbcClient jdbcClient;
+
     private List<Session> sessions = new ArrayList<>();
 
-    public SessionRepository(FilmRepository filmRepository) {
+    public SessionRepository(FilmRepository filmRepository, JdbcClient jdbcClient) {
         this.filmRepository = filmRepository;
+        this.jdbcClient = jdbcClient;
     }
 
     List<Session> findAll() {
@@ -52,38 +56,52 @@ public class SessionRepository {
     private void init() {
         sessions.add(new Session(1,
                 LocalDateTime.of(2024, 3, 30, 16, 45),
-                SeatsManager.generateSeating(10, 15),
-                filmRepository.findById(1).get(),
+                SeatsManager.generateSeating(10, 20),
+                filmRepository.findById(1),
                 Language.ENGLISH
         ));
 
         sessions.add(new Session(2,
                 LocalDateTime.of(2024, 3, 30, 17, 45),
-                SeatsManager.generateSeating(20, 25),
-                filmRepository.findById(2).get(),
+                SeatsManager.generateSeating(15, 25),
+                filmRepository.findById(2),
                 Language.ESTONIAN
         ));
 
         sessions.add(new Session(3,
                 LocalDateTime.of(2024, 3, 30, 18, 30),
-                SeatsManager.generateSeating(20, 25),
-                filmRepository.findById(4).get(),
+                SeatsManager.generateSeating(20, 20),
+                filmRepository.findById(4),
                 Language.ESTONIAN
         ));
 
         sessions.add(new Session(4,
                 LocalDateTime.of(2024, 3, 31, 20, 30),
                 SeatsManager.generateSeating(20, 25),
-                filmRepository.findById(3).get(),
+                filmRepository.findById(3),
                 Language.ENGLISH
         ));
 
         sessions.add(new Session(5,
                 LocalDateTime.of(2024, 3, 31, 18, 15),
                 SeatsManager.generateSeating(20, 25),
-                filmRepository.findById(5).get(),
+                filmRepository.findById(5),
                 Language.ESTONIAN
         ));
     }
+/*
+    public void insertSession(Integer id, LocalDateTime time, String isSeatFreeStr, Integer filmId, String language) {
+        String sql = "INSERT INTO Session (id, time, isSeatFree, film_id, language) VALUES (?, ?, ?, ?, ?)";
+        jdbcClient.sql(sql)
+                .bind(id)
+                .bind(Timestamp.valueOf(time))
+                .bind(isSeatFreeStr)
+                .bind(filmId)
+                .bind(language)
+                .fetch()
+                .rowsUpdated();
+    }
+
+ */
 
 }
