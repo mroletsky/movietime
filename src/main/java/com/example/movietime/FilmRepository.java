@@ -10,6 +10,7 @@ import java.util.Optional;
 @Repository
 public class FilmRepository {
     private List<Film> films = new ArrayList<>();
+    private List<Film> watchHistory = new ArrayList<>();
 
     List<Film> findAll() {
         return films;
@@ -29,8 +30,23 @@ public class FilmRepository {
 
     List<Film> findByAgeLimit(int ageLimit) {
         return films.stream()
-                .filter(film -> film.ageLimit().compareTo(ageLimit) >= 0)
+                .filter(film -> film.ageLimit().compareTo(ageLimit) <= 0)
                 .toList();
+    }
+
+    List<Film> findByGenreAndAgeLimit(Genre genre, int ageLimit) {
+        return films.stream()
+                .filter(film -> film.genres().contains(genre))
+                .filter(film -> film.ageLimit().compareTo(ageLimit) <= 0)
+                .toList();
+    }
+
+    void addToWatchHistory(Film film) {
+        watchHistory.add(film);
+    }
+
+    List<Film> recommendedFilms() {
+        return null;
     }
 
     @PostConstruct

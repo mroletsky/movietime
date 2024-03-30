@@ -2,10 +2,7 @@ package com.example.movietime;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
@@ -34,14 +31,20 @@ public class FilmController {
         return new ResponseEntity<>(film.get(), HttpStatus.OK);
     }
 
-    @GetMapping("/genre/{input}")
-    public ResponseEntity<?> findByGenre(@PathVariable String input) {
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<?> findByGenre(@PathVariable("genre") String input) {
         try {
             Genre genre = Genre.valueOf(input.toUpperCase());
             return new ResponseEntity<>(filmRepository.findByGenre(genre), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/genres")
+    public ResponseEntity<Genre[]> getAllGenres() {
+        Genre[] genres = Genre.values();
+        return new ResponseEntity<>(genres, HttpStatus.OK);
     }
 
     @GetMapping("/age/{age}")
@@ -52,9 +55,23 @@ public class FilmController {
         return new ResponseEntity<>(filmRepository.findByAgeLimit(age), HttpStatus.OK);
     }
 
-    @GetMapping("/home")
-    String home() {
-        return "Homepage";
+    @GetMapping("/genre/{genre}/age/{age}")
+    public ResponseEntity<?> findByGenre(@PathVariable("genre") String input, @PathVariable Integer age) {
+        if (age < 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        try {
+            Genre genre = Genre.valueOf(input.toUpperCase());
+            return new ResponseEntity<>(filmRepository.findByGenreAndAgeLimit(genre, age), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/watch")
+    void watchFilm(@RequestBody Film film) {
+        filmRepository.addToWatchHistory(film);
     }
 
 }
