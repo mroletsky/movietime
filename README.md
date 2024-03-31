@@ -7,7 +7,7 @@ https://www.youtube.com/watch?v=31KTdfRH6nY&ab_channel=freeCodeCamp.org
 
 # FilmController
 
-## GET api/films
+## GET /api/films
 
 This endpoint retrieves all the films from the database.
 
@@ -15,7 +15,7 @@ This endpoint retrieves all the films from the database.
 
 - `200 OK`: The request was successful. The response body contains a list of all the films in the database.
 
-## GET api/films/{id}
+## GET /api/films/{id}
 
 This endpoint retrieves the film from the database that has the specified id.
 
@@ -28,7 +28,7 @@ This endpoint retrieves the film from the database that has the specified id.
 - `200 OK`: The request was successful. The response body contains a list of films that hav an age limit less than or equal to the specified age.
 - `400 Bad Request`: The request was malformed. This could be due the film not being present in the database.
 
-## GET api/films/age/{age}
+## GET /api/films/age/{age}
 
 This endpoint retrieves a list of films from the database that have an age limit less than or equal to the specified age.
 
@@ -41,7 +41,7 @@ This endpoint retrieves a list of films from the database that have an age limit
 - `200 OK`: The request was successful. The response body contains a list of films that hav an age limit less than or equal to the specified age.
 - `400 Bad Request`: The request was malformed. This could be due to a negative age.
 
-## GET api/films/genre/{genre}
+## GET /api/films/genre/{genre}
 
 This endpoint retrieves a list of films from the database that match the specified genre.
 
@@ -55,7 +55,7 @@ This endpoint retrieves a list of films from the database that match the specifi
 - `400 Bad Request`: The request was malformed. This could be due to an invalid genre.
 
 
-## GET api/films/genre/{genre}/age/{age}
+## GET /api/films/genre/{genre}/age/{age}
 
 This endpoint retrieves a list of films from the database that match the specified genre and have an age limit less than or equal to the specified age.
 
@@ -69,7 +69,7 @@ This endpoint retrieves a list of films from the database that match the specifi
 - `200 OK`: The request was successful. The response body contains a list of films that match the specified genre and have an age limit less than or equal to the specified age.
 - `400 Bad Request`: The request was malformed. This could be due to an invalid genre or a negative age.
 
-## GET api/films/recommend
+## GET /api/films/recommend
 
 This endpoint retrieves the most recommended film for the user based on the watch history .
 
@@ -194,7 +194,7 @@ A `Film` record represents a film. It has the following fields:
 
 # SessionController
 
-## GET api/sessions
+## GET /api/sessions
 
 Returns all sessions.
 
@@ -202,7 +202,7 @@ Returns all sessions.
 
 - `200 OK`: The request was successful. The response body contains a list of all sessions.
 
-## GET api/sessions/{id}
+## GET /api/sessions/{id}
 
 Returns the session with the specified ID.
 
@@ -215,7 +215,7 @@ Returns the session with the specified ID.
 - `200 OK`: The request was successful. The response body contains the session with the specified id.
 - `400 Bad Request`: The request was malformed. This could be due the session with id not existing.
 
-## GET api/sessions/date/{date}
+## GET /api/sessions/date/{date}
 
 Returns all sessions on the specified date.
 
@@ -227,7 +227,7 @@ Returns all sessions on the specified date.
 
 - `200 OK`: The request was successful. The response body contains the sessions on the specified date.
 
-## GET api/sessions/language/{language}
+## GET /api/sessions/language/{language}
 
 Returns all sessions in the specified language.
 
@@ -240,7 +240,7 @@ Returns all sessions in the specified language.
 - `200 OK`: The request was successful. The response body contains the sessions with the specified language.
 - `400 Bad Request`: The request was malformed. This could be due an invalid language.
 
-## GET api/sessions/date/{date}/language/{language}
+## GET /api/sessions/date/{date}/language/{language}
 
 Returns all sessions on the specified date and in the specified language.
 
@@ -254,7 +254,7 @@ Returns all sessions on the specified date and in the specified language.
 - `200 OK`: The request was successful. The response body contains the sessions with the specified language and date.
 - `400 Bad Request`: The request was malformed. This could be due an invalid language or date.
 
-## GET api/sessions/{id}/recommend-seats
+## GET /api/sessions/{id}/recommend-seats
 
 Finds the best seats for the specified number of seats in the session with the specified ID.
 
