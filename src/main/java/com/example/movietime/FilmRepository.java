@@ -121,7 +121,7 @@ public class FilmRepository {
         });
     }
 
-    public void addFilmToWatchHistory(Film film) {
+    void addFilmToWatchHistory(Film film) {
         String sql = "INSERT INTO watchhistory (film_id) VALUES (?)";
         jdbcTemplate.update(sql, film.id());
     }

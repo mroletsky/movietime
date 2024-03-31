@@ -23,30 +23,30 @@ public class SessionRepository {
         this.jdbcClient = jdbcClient;
     }
 
-    List<Session> findAll() {
+    public List<Session> findAll() {
         return sessions;
     }
 
-    Session findById(Integer id) {
+    public Session findById(Integer id) {
         return sessions.stream()
                 .filter(session -> session.id().equals(id))
                 .findFirst()
                 .get();
     }
 
-    List<Session> findByTimeBetween(LocalDateTime start, LocalDateTime end) {
+    public List<Session> findByTimeBetween(LocalDateTime start, LocalDateTime end) {
         return sessions.stream()
                 .filter(session -> session.time().isBefore(end) && session.time().isAfter(start))
                 .toList();
     }
 
-    List<Session> findByLanguage(Language language) {
+    public List<Session> findByLanguage(Language language) {
         return sessions.stream()
                 .filter(session -> session.language().equals(language))
                 .toList();
     }
 
-    List<Session> findByDateAndLanguage(LocalDateTime start, LocalDateTime end, Language language) {
+    public List<Session> findByDateAndLanguage(LocalDateTime start, LocalDateTime end, Language language) {
         return sessions.stream()
                 .filter(session -> session.time().isBefore(end) && session.time().isAfter(start))
                 .filter(session -> session.language().equals(language))

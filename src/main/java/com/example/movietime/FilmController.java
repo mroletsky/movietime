@@ -22,8 +22,12 @@ public class FilmController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
-        Film film = filmRepository.findById(id);
-        return new ResponseEntity<>(film, HttpStatus.OK);
+        try {
+            Film film = filmRepository.findById(id);
+            return new ResponseEntity<>(film, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/genre/{genre}")
