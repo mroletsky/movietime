@@ -258,7 +258,11 @@ Returns all sessions on the specified date and in the specified language.
 
 Finds the best seats for the specified number of seats in the session with the specified ID.
 
-### Parameters:
+### Path Parameters:
+
+- `id`: The id of the session for which to recommend-seats.
+
+### Requested Parameters:
 
 - `numSeats`: The number of seats to recommend.
 
