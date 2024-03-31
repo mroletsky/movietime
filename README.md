@@ -268,7 +268,7 @@ Finds the best seats for the specified number of seats in the session with the s
 
 ### Responses:
 
-- `200 OK`: The request was successful. The response body contains the row and column (`int[]`) of the left most seat, start row and column count for 0. Returns `{-1, -1}` when no possible seating is found
+- `200 OK`: The request was successful. The response body contains the row and column (`int[]`) of the left most seat, start row and column count for 0. Returns `{-1, -1}` when no possible seating is found.
 
 # SessionRepository
 
