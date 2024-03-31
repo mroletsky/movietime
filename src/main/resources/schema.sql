@@ -7,6 +7,13 @@ CREATE TABLE IF NOT EXISTS Film (
     duration INT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS WatchHistory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    film_id INT,
+    FOREIGN KEY (film_id) REFERENCES Film(id)
+);
+
+
 CREATE TABLE Session (
     id INT PRIMARY KEY,
     time TIMESTAMP,

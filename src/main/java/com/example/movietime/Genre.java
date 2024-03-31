@@ -6,6 +6,7 @@ public enum Genre {
     ADVENTURE,
     ANIMATION,
     COMEDY,
+    CRIME,
     DRAMA,
     FANTASY,
     HISTORICAL,
@@ -13,5 +14,7 @@ public enum Genre {
     MUSICAL,
     ROMANCE,
     SCIFI,
-    THRILLER;
+    THRILLER,
+    WAR
 }
+

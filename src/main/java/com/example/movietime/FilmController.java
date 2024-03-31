@@ -63,10 +63,15 @@ public class FilmController {
         }
     }
 
+    @GetMapping("/recommend")
+    public ResponseEntity<?> recommend() {
+        return new ResponseEntity<>(filmRepository.recommendFilm(), HttpStatus.OK);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/watch")
     void watchFilm(@RequestBody Film film) {
-        filmRepository.addToWatchHistory(film);
+        filmRepository.addFilmToWatchHistory(film);
     }
 
 }
