@@ -1,6 +1,5 @@
 package com.example.movietime;
 
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -171,11 +169,7 @@ public class FilmRepository {
                 bestMatch = film;
                 bestMatchScore = matchScore;
             }
-            System.out.println(film + " " + matchScore);
-            System.out.println(genres);
         }
-        System.out.println(bestMatchScore);
-        System.out.println(bestMatch);
 
         return bestMatch;
     }
