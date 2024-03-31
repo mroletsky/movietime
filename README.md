@@ -282,7 +282,7 @@ Returns the session with the specified ID.
 
 ## Method: findByTimeBetween(LocalDateTime start, LocalDateTime end)
 
-Returns all sessions that start and end between the specified times.
+Returns all sessions that start between the specified times.
 
 ## Method: findByLanguage(Language language)
 
