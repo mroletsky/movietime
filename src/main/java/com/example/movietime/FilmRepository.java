@@ -23,7 +23,7 @@ public class FilmRepository {
 
 
     // I asked GPT for an example request to the database and made these find methods based on that
-    // Since GPT gave me and example using a JdbcTemplate instead of the newer JdbcClient, I used that instead
+    // Since GPT gave me an example using a JdbcTemplate instead of the newer JdbcClient, I used that instead
     public List<Film> findAll() {
         String sql = "SELECT * FROM Film";
         return jdbcTemplate.query(sql, new RowMapper<Film>() {
